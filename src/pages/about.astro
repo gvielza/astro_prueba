@@ -1,0 +1,48 @@
+---
+const pageTitle = 'Sobre mi';
+const indentity={
+	firstName: 'Gionnelly',
+    country: 'Argentina', 
+	occupation: 'Programador',
+	hobbies: ['Cocinar', 'Correr', 'Jugar']
+	};
+	const skills=['HTML', 'CSS', 'JavaScript', 'Astro', 'React'];
+	const happy=false;
+	const finished=false;
+	const goal=2;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<style>
+			h1{
+				color: purple;
+				size: 4rem;
+			}
+		</style>
+	</head>
+	<body>
+        <a href="/">Inicio</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+		
+        <h1>{pageTitle}</h1>
+		<ul>
+		<li>Mi nombre es {indentity.firstName} </li>
+		<li> Soy de {indentity.country} y trabajo como {indentity.occupation}</li>
+		Me gusta entre otras cosas: {indentity.hobbies[0]}, {indentity.hobbies[1]} y {indentity.hobbies[2]}
+		</ul>
+		<ul>
+			Entre mis habilidades principales se encuentran: {skills.map((skill)=> <li>{skill}</li>)}
+		</ul>
+		{happy&& <p>Estoy feliz</p>}
+		{finished&& <p>Estoy terminado</p>}
+		{goal>=3 ? <p>Estoy creciendo</p>:<p>Estoy parado</p>}
+
+	</body>
+</html>

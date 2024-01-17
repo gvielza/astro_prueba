@@ -1,12 +1,6 @@
----
-
-import '../styles/global.css';
-import Navigation from '../components/Navigation.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
-
-const pageTitle = 'Sobre mi';
+--- 
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle="Sobre mi";
 const indentity={
 	firstName: 'Gionnelly',
     country: 'Argentina', 
@@ -21,43 +15,27 @@ const indentity={
 	const textCase='uppercase';
 	const heightskill='bold';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-		<style define:vars={{skillcolor,textCase,heightskill}}>
-			h1{
-				color: purple;
-				size: 4rem;
-			}
-			.skill{
-				font-weight: var(--heightskill);
-				color:var(--skillcolor); 
-				text-transform: var(--textCase);
-			}
-		</style>
-	</head>
-	<body>
-        <Header/>
-		
-        <h1>{pageTitle}</h1>
-		<ul>
-		<li>Mi nombre es {indentity.firstName} </li>
-		<li> Soy de {indentity.country} y trabajo como {indentity.occupation}</li>
-		Me gusta entre otras cosas: {indentity.hobbies[0]}, {indentity.hobbies[1]} y {indentity.hobbies[2]}
-		</ul>
-		<ul>
-			Entre mis habilidades principales se encuentran: {skills.map((skill)=> <li class="skill">{skill}</li>)}
-		</ul>
-		{happy&& <p>Estoy feliz</p>}
-		{finished&& <p>Estoy terminado</p>}
-		{goal>=3 ? <p>Estoy creciendo</p>:<p>Estoy parado</p>}
-
-		<Footer/>
-
-	</body>
-</html>
+<BaseLayout >   
+    <style define:vars={{skillcolor,textCase,heightskill}}>
+        h1{
+            color: purple;
+            size: 4rem;
+        }
+        .skill{
+            font-weight: var(--heightskill);
+            color:var(--skillcolor); 
+            text-transform: var(--textCase);
+        }
+    </style>
+    <h1>{pageTitle}</h1>
+    <ul>
+    <li>Mi nombre es {indentity.firstName} </li>
+    <li> Soy de {indentity.country} y trabajo como {indentity.occupation}</li>
+    Me gusta entre otras cosas: {indentity.hobbies[0]}, {indentity.hobbies[1]} y {indentity.hobbies[2]}
+    </ul>
+    <ul>
+        Entre mis habilidades principales se encuentran: {skills.map((skill)=> <li class="skill">{skill}</li>)}
+    </ul>
+    {happy&& <p>Estoy feliz</p>}
+    {finished&& <p>Estoy terminado</p>}
+    {goal>=3 ? <p>Estoy creciendo</p>:<p>Estoy parado</p>} </BaseLayout>
